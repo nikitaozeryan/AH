@@ -179,7 +179,7 @@ extension NSManagedObjectContext {
             request.predicate = predicate
             request.sortDescriptors = sortDescriptors ?? []
             request.fetchLimit = pagination.limit
-            request.fetchOffset = pagination.offset
+            request.fetchOffset = pagination.page * pagination.limit
         }
     }
 }

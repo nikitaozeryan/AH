@@ -1,0 +1,16 @@
+PODS:
+  - PinterestAnimator (0.2)
+
+DEPENDENCIES:
+  - PinterestAnimator
+
+SPEC REPOS:
+  trunk:
+    - PinterestAnimator
+
+SPEC CHECKSUMS:
+  PinterestAnimator: bebbb6d25e8f851c5e545a462838d8943ae84b01
+
+PODFILE CHECKSUM: 4d4a91eb1b798b848e129dc4ccaa6054bf38f5d8
+
+COCOAPODS: 1.10.1

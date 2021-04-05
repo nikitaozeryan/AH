@@ -24,7 +24,7 @@ public let pokemonPlaceholder = UIImage(named: "pokeball")
 
 
 public var baseURL: URL = {
-    guard let url = URL(string: "https://pokeapi.co/api/v2") else {
+    guard let url = URL(string: "https://www.rijksmuseum.nl") else {
         fatalError("Check baseURL")
     }
     return url

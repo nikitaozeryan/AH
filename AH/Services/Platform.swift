@@ -11,8 +11,7 @@ final class Platform: UseCasesProvider {
     
     // MARK: - UseCases
     
-    var pokemon: PokemonUseCase
-    var information: InformationUseCase
+    var remoteData: RemoteDataUseCase
     var download: DownloadUseCase
     let imageCache = NSCache<NSString, UIImage>()
     
@@ -29,8 +28,7 @@ final class Platform: UseCasesProvider {
         network = Network(baseURL: baseURL,
                           plugins: plugins)
         database = CoreDataDatabase()
-        pokemon = PokemonService(network: network, database: database)
-        information = InformationService(network: network)
         download = DownloadService(imageCache: imageCache)
+        remoteData = RemoteDataService(network: network, database: database)
     }
 }

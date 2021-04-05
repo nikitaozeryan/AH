@@ -7,9 +7,13 @@
 
 import Foundation
 
-struct APIPageResponse<Value> {
-    let results: Value
-    let count: Int?
+struct APIResponse<Value> {
+    let data: Value
+
+    func map<T>(_ transform: (Value) throws -> T) rethrows -> APIResponse<T> {
+        let newData = try transform(data)
+        return APIResponse<T>(data: newData)
+    }
 }
 
-extension APIPageResponse: Decodable where Value: Decodable {}
+extension APIResponse: Decodable where Value: Decodable {}
