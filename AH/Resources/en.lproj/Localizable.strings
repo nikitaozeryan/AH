@@ -1,0 +1,13 @@
+/* 
+  Localizable.strings
+  WiseEmotions
+
+  Created by Nikita Ozerian on 05.04.2021.
+  
+*/
+
+// MARK: - Common
+
+"loading" = "Loading";
+"error" = "Error";
+"ok" = "ok";
