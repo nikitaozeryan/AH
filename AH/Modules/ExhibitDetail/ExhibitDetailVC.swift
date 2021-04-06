@@ -22,7 +22,6 @@ final class ExhibitDetailVC: BaseVC, ViewModelContainer {
         ExhibitDetailView(dataSource: self, delegate: self)
     }()
     
-    
     // MARK: - Life Cycle
     
     override func loadView() {

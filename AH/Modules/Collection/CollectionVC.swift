@@ -23,6 +23,8 @@ final class CollectionVC: BaseVC, ViewModelContainer {
         ExhibitCollectionView(dataSource: self, delegate: self, pinterestDelegate: self)
     }()
     
+    private lazy var loader: UIActivityIndicatorView = UIActivityIndicatorView(style: .medium)
+    
     // MARK: - Private properties
     
     private var exhibitsFRC: NSFetchedResultsController<ExhibitEntity>?
@@ -53,6 +55,7 @@ final class CollectionVC: BaseVC, ViewModelContainer {
                 viewController.showErrorAlert(error)
             }
         }
+        loader.reactive.isAnimating <~ viewModel.fetchExhibitsAction.isExecuting
         
         let activityActionGroup = ActionGroup()
         activityActionGroup.append(viewModel.fetchExhibitDetailsAction)
@@ -65,6 +68,8 @@ final class CollectionVC: BaseVC, ViewModelContainer {
     
     private func setup() {
         navigationItem.title = localizedString(key: "collectionVC.title").uppercased()
+        let barItem = UIBarButtonItem(customView: loader)
+        navigationItem.rightBarButtonItem = barItem
     }
     
     private func setupFRC(with context: NSManagedObjectContext) {
@@ -112,7 +117,6 @@ extension CollectionVC: UICollectionViewDataSource {
         guard let exhibitEntity = exhibitsFRC?.object(at: indexPath),
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: ExhibitCVC.self),
                                                                 for: indexPath) as? ExhibitCVC else { return UICollectionViewCell() }
-        
         cell.configure(with: exhibitEntity)
         return cell
     }

@@ -161,7 +161,6 @@
 		8F8D3542261B05F400BA1587 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 8F8D3541261B05F400BA1587 /* SnapKit */; };
 		8FACFAD4261C804C008B4DC1 /* ExhibitDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FACFAD3261C804C008B4DC1 /* ExhibitDetailVC.swift */; };
 		8FACFAD9261C8056008B4DC1 /* ExhibitDetailVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FACFAD8261C8056008B4DC1 /* ExhibitDetailVM.swift */; };
-		8FC45A9E261B2C0600784B06 /* Bagel in Frameworks */ = {isa = PBXBuildFile; productRef = 8FC45A9D261B2C0600784B06 /* Bagel */; };
 		8FC45AC4261B2D7700784B06 /* RequestParams.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FC45AC3261B2D7700784B06 /* RequestParams.swift */; };
 		8FCC7741261C61F200D226D7 /* ReactiveCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 8FCC7740261C61F200D226D7 /* ReactiveCocoa */; };
 		8FE1F8EF261C617B00E6C9CE /* ReactiveSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 8FE1F8EE261C617B00E6C9CE /* ReactiveSwift */; };
@@ -368,7 +367,6 @@
 				8F3E3E8C261C60BF00DF47DC /* SDWebImage in Frameworks */,
 				8FE1F8EF261C617B00E6C9CE /* ReactiveSwift in Frameworks */,
 				8F8D3530261B054D00BA1587 /* Alamofire in Frameworks */,
-				8FC45A9E261B2C0600784B06 /* Bagel in Frameworks */,
 				8F3E3E8E261C60BF00DF47DC /* SDWebImageMapKit in Frameworks */,
 				8FCC7741261C61F200D226D7 /* ReactiveCocoa in Frameworks */,
 				8F8D3542261B05F400BA1587 /* SnapKit in Frameworks */,
@@ -1190,7 +1188,6 @@
 			packageProductDependencies = (
 				8F8D352F261B054D00BA1587 /* Alamofire */,
 				8F8D3541261B05F400BA1587 /* SnapKit */,
-				8FC45A9D261B2C0600784B06 /* Bagel */,
 				8F3E3E8B261C60BF00DF47DC /* SDWebImage */,
 				8F3E3E8D261C60BF00DF47DC /* SDWebImageMapKit */,
 				8FE1F8EE261C617B00E6C9CE /* ReactiveSwift */,
@@ -1271,7 +1268,6 @@
 			packageReferences = (
 				8F8D352E261B054D00BA1587 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				8F8D3540261B05F400BA1587 /* XCRemoteSwiftPackageReference "SnapKit" */,
-				8FC45A9C261B2C0600784B06 /* XCRemoteSwiftPackageReference "Bagel" */,
 				8F3E3E8A261C60BF00DF47DC /* XCRemoteSwiftPackageReference "SDWebImage" */,
 				8FE1F8ED261C617B00E6C9CE /* XCRemoteSwiftPackageReference "ReactiveSwift" */,
 				8FCC773F261C61F200D226D7 /* XCRemoteSwiftPackageReference "ReactiveCocoa" */,
@@ -1842,14 +1838,6 @@
 				minimumVersion = 5.0.1;
 			};
 		};
-		8FC45A9C261B2C0600784B06 /* XCRemoteSwiftPackageReference "Bagel" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/bogdangolubcr/Bagel.git";
-			requirement = {
-				branch = master;
-				kind = branch;
-			};
-		};
 		8FCC773F261C61F200D226D7 /* XCRemoteSwiftPackageReference "ReactiveCocoa" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/ReactiveCocoa/ReactiveCocoa.git";
@@ -1888,11 +1876,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 8F8D3540261B05F400BA1587 /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = SnapKit;
-		};
-		8FC45A9D261B2C0600784B06 /* Bagel */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 8FC45A9C261B2C0600784B06 /* XCRemoteSwiftPackageReference "Bagel" */;
-			productName = Bagel;
 		};
 		8FCC7740261C61F200D226D7 /* ReactiveCocoa */ = {
 			isa = XCSwiftPackageProductDependency;

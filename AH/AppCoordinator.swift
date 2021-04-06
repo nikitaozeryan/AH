@@ -7,7 +7,6 @@
 
 import UIKit
 import ReactiveSwift
-import Bagel
 
 final class AppCoordinator {
     
@@ -26,9 +25,6 @@ final class AppCoordinator {
     }
     
     private func setup() {
-        #if DEBUG
-        Bagel.start()
-        #endif
         let navigationController = BaseNavigationVC()
         window.rootViewController = navigationController
         let coordinator = MuseumCollectionCoordinator(navigationController: navigationController,

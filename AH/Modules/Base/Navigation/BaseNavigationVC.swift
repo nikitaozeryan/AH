@@ -23,7 +23,11 @@ extension UIViewController: NavigationBarAppearance {
     }
     
     var preferredNavigationBarTintColor: UIColor? {
-        return nil
+        preferredStatusBarStyle == .lightContent ? .black : .white
+    }
+    
+    var preferredNavigationBarStyle: UIBarStyle? {
+        preferredStatusBarStyle == .lightContent ? UIBarStyle.black : UIBarStyle.default
     }
 }
 
@@ -40,8 +44,8 @@ class BaseNavigationVC: UINavigationController {
         super.loadView()
         
         navigationBar.barTintColor = .clear
-        navigationBar.tintColor = .black
-        navigationBar.barStyle = .black
+        navigationBar.tintColor = preferredNavigationBarTintColor
+        navigationBar.barStyle = preferredNavigationBarStyle ?? .black
         navigationBar.isTranslucent = true
         delegate = self
     }
@@ -86,12 +90,12 @@ class BaseNavigationVC: UINavigationController {
         
         if #available(iOS 13.0, *) {
             let navBarAppearance = UINavigationBarAppearance()
-            navBarAppearance.titleTextAttributes = [.foregroundColor: UIColor.black]
-            navBarAppearance.largeTitleTextAttributes = [.foregroundColor: UIColor.black]
+            navBarAppearance.titleTextAttributes = [.foregroundColor: preferredNavigationBarTintColor ?? UIColor.black]
+            navBarAppearance.largeTitleTextAttributes = [.foregroundColor: preferredNavigationBarTintColor ?? UIColor.black]
             navigationBar.standardAppearance = navBarAppearance
             navigationBar.scrollEdgeAppearance = navBarAppearance
         } else {
-            navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.black]
+            navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: preferredNavigationBarTintColor ?? UIColor.black]
         }
         
         delegate = self

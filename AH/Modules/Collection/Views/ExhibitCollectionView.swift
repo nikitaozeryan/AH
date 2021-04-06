@@ -57,14 +57,11 @@ final class ExhibitCollectionView: UIView {
         collectionView.dataSource = dataSource
         collectionView.delegate = delegate
         collectionView.backgroundColor = .clear
-//        collectionView.contentInset = UIEdgeInsets(top: 23, left: 16, bottom: 10, right: 16)
         addSubview(collectionView)
            
     }
     
     private func setupConstraints() {
-        collectionView.snp.makeConstraints {
-            $0.leading.top.trailing.bottom.equalToSuperview()
-        }
+        collectionView.snp.makeConstraints { $0.edges.equalToSuperview() }
     }
 }

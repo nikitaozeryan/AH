@@ -27,6 +27,7 @@ final class ExhibitDetailView: UIView {
         tableView.sectionHeaderHeight = UITableView.automaticDimension
         tableView.showsVerticalScrollIndicator = false
         tableView.showsHorizontalScrollIndicator = false
+        tableView.contentOffset = .zero
         return tableView
     }()
     

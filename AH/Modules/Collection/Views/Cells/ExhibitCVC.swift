@@ -28,7 +28,7 @@ final class ExhibitCVC: UICollectionViewCell {
     private lazy var avatarImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = imagePlaceholder
-        imageView.contentMode = .scaleAspectFit
+        imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
         imageView.backgroundColor = .lightGray
         return imageView

@@ -11,24 +11,6 @@
         }
       },
       {
-        "package": "Bagel",
-        "repositoryURL": "https://github.com/bogdangolubcr/Bagel.git",
-        "state": {
-          "branch": "master",
-          "revision": "028101185058c9bca1cfa6b5927d08ef2c54adad",
-          "version": null
-        }
-      },
-      {
-        "package": "CocoaAsyncSocket",
-        "repositoryURL": "https://github.com/bogdangolubcr/CocoaAsyncSocket.git",
-        "state": {
-          "branch": "master",
-          "revision": "7ca6a9adedd39f5569e64db1546a2f3eac681605",
-          "version": null
-        }
-      },
-      {
         "package": "ReactiveCocoa",
         "repositoryURL": "https://github.com/ReactiveCocoa/ReactiveCocoa.git",
         "state": {

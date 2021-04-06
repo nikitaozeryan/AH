@@ -13,7 +13,7 @@ final class ExhibitDetailHeaderView: UITableViewHeaderFooterView {
     
     private lazy var containerView: UIView = {
         let view = UIView()
-        view.backgroundColor = .white
+        view.backgroundColor = .black
         return view
     }()
     
@@ -29,7 +29,7 @@ final class ExhibitDetailHeaderView: UITableViewHeaderFooterView {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: defaultFontSize)
         label.numberOfLines = 0
-        label.textColor = titleColor
+        label.textColor = .white
         label.setContentCompressionResistancePriority(.required, for: .vertical)
         return label
     }()
@@ -82,7 +82,7 @@ final class ExhibitDetailHeaderView: UITableViewHeaderFooterView {
     private func setupConstraints() {
         containerView.snp.makeConstraints { $0.edges.equalTo(contentView) }
         avatarImageView.snp.makeConstraints {
-            $0.top.equalToSuperview().offset(offset)
+            $0.top.equalToSuperview()
             $0.left.equalToSuperview().offset(offset)
             $0.right.equalToSuperview().inset(offset)
         }
