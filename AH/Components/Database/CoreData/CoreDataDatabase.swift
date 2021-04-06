@@ -13,13 +13,8 @@ final class CoreDataDatabase {
     
     // MARK: - Private properties
     
-    private let managedObjectsTypes: [NSManagedObject.Type] = []/*[AchievementEntity.self,
-                                                               MediaEntity.self,
-                                                               URLEntity.self,
-                                                               CurrentUserEntity.self,
-                                                               InterlocutorEntity.self,
-                                                               MessageEntity.self,
-                                                               ChatEntity.self] */
+    private let managedObjectsTypes: [NSManagedObject.Type] = [ImageEntity.self,
+                                                               ExhibitEntity.self]
     private let database = CoreDataStack()
     
     // MARK: - Properties

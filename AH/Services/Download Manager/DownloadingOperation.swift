@@ -42,9 +42,7 @@ final class DownloadingOperation: Operation {
             }
 
             self.media.status = .downloading(progress: progress.fractionCompleted)
-        }
-
-        .responseData { response in
+        }.responseData { response in
             self.task.flatMap { self.endBackgroundTask(taskID: $0) }
             if let error = response.error {
                 self.media.status = .failed(error: error)
@@ -58,13 +56,10 @@ final class DownloadingOperation: Operation {
             }
             
             self.media.status = .completed
-        }
-
-        .resume()
+        }.resume()
     }
 
     override func cancel() {
-
         super.cancel()
 
         media.status = .cancelled

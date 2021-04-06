@@ -1,6 +1,0 @@
-framework module PinterestAnimator {
-  umbrella header "PinterestAnimator-umbrella.h"
-
-  export *
-  module * { export * }
-}

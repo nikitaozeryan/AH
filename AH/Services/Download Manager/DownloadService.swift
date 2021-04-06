@@ -21,7 +21,7 @@ final class DownloadService: DownloadUseCase {
     // MARK: - Public Interactions
     
     @discardableResult
-    func addDownload(from url: URL, ownerID: Int64) -> Media? {
+    func addDownload(from url: URL, ownerID: String) -> Media? {
         
         let retVal = Media(url: url, ownerID: ownerID)
         if let media = downloads.first(where: { $0 == retVal }) {

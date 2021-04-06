@@ -12,15 +12,12 @@ protocol CollectionVMDelegate: AnyObject {
 }
 
 final class CollectionVM: UseCasesConsumer {
-    typealias UseCases = HasRemoteDataUseCase
-    private enum C {
-        static let searchLimit: Int = 30
-    }
+    typealias UseCases = HasInformationUseCase & HasDownloadUseCase
 
     // MARK: - Public Properties
     
     let actions = ActionGroup()
-    let pagination = MutableProperty(LimitOffset(limit: C.searchLimit))
+    let pagination = MutableProperty(LimitOffset())
     
     // MARK: - Private Properties
     
@@ -28,32 +25,44 @@ final class CollectionVM: UseCasesConsumer {
 
     // MARK: - Actions
     
-//    private(set) lazy var fetchPokemonsAction = Action(execute: fetchPokemons)
-//    private(set) lazy var fetchPokemonInfo = Action(execute: useCases.pokemon.fetchInfo)
+    
+    private(set) lazy var fetchExhibitsAction = Action(execute: fetchCollection)
     
     // MARK: - Life Cycle
     
     init(useCases: UseCases, delegate: CollectionVMDelegate) {
         self.useCases = useCases
         self.delegate = delegate
-//        setupActionGroup()
-//        setupObservers()
+        setupActionGroup()
+        setupObservers()
     }
     
     // MARK: - Helper methods
     
-//    func selectPokemonEntity(_ pokemonEntity: PokemonEntity) {
+    func selectExhibitEntity(_ exhibitEntity: ExhibitEntity) {
 //        fetchPokemonInfo.apply(Pokemon(from: pokemonEntity)).start()
-//    }
-//
-//    // MARK: - Private methods
-//
-//    private func setupActionGroup() {
-//        actions.append(fetchPokemonsAction)
+    }
+
+    // MARK: - Private methods
+
+    private func setupActionGroup() {
+        actions.append(fetchExhibitsAction)
 //        actions.append(fetchPokemonInfo)
-//    }
-//
-//    private func setupObservers() {
+    }
+
+    private func setupObservers() {
+//        useCases
+//            .information
+//            .exhibitsCount
+//            .signal
+//            .take(duringLifetimeOf: self)
+//            .observeValues { [weak self] exhibitsCount in
+//                guard let self = self else { return }
+//                self.pagination.value = LimitOffset(page: self.pagination.value.page,
+//                                                    limit: self.pagination.value.limit,
+//                                                    total: exhibitsCount)
+//        }
+//        fetchPokemonsAction.apply().start()
 //        pagination <~ fetchPokemonsAction.values.map { $0.pagination }
 //
 //        fetchPokemonInfo
@@ -64,10 +73,16 @@ final class CollectionVM: UseCasesConsumer {
 //                guard let viewModel = self else { return }
 //                viewModel.delegate?.pokemonVM(viewModel, didSelectPokemon: pokemon)
 //            }
-//    }
-//
-//    private func fetchPokemons(offset: Int) -> AsyncTask<PokemonsPage> {
-//        useCases.pokemon.fetchPokemonList(with: LimitOffset(offset: offset))
-//    }
+    }
+
+    private func fetchCollection() -> AsyncTask<Void> {
+        guard let pagination = pagination.value.nextPage() else { return .empty }
+        self.pagination.value = pagination
+        return useCases.information.fetchCollection(with: BaseParameters(language: .en,
+                                                                  pagination: self.pagination.value,
+                                                                  format: .json,
+                                                                  sortParameter: .artist,
+                                                                  imageOnly: true))
+    }
 }
 

@@ -8,7 +8,7 @@
 import Foundation
 
 struct LimitOffset: RequestParams {
-    static let defaultLimit = 20
+    static let defaultLimit = 30
     static let defaultPage = 1
     
     // MARK: - Properties

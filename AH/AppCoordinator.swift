@@ -17,7 +17,6 @@ final class AppCoordinator {
     
     private let useCases: UseCasesProvider
     private let (lifetime, token) = Lifetime.make()
-    private(set) lazy var fetchPokemonsAction = Action(execute: fetchCollection)
     
     // MARK: - Setup
     init(useCases: UseCasesProvider) {
@@ -32,15 +31,9 @@ final class AppCoordinator {
         #endif
         let navigationController = BaseNavigationVC()
         window.rootViewController = navigationController
+        let coordinator = MuseumCollectionCoordinator(navigationController: navigationController,
+                                             useCases: useCases)
+        coordinator.start()
         window.makeKeyAndVisible()
-        fetchPokemonsAction.values.take(duringLifetimeOf: self).observe(on: UIScheduler()).observeValues { response in
-            print("lalal")
-        }
-        fetchPokemonsAction.apply().start()
-        
-    }
-    
-    private func fetchCollection() -> AsyncTask<Void> {
-        useCases.remoteData.fetchCollection(with: BaseParameters(language: .en, pagination: LimitOffset(page: 2, limit: 10), format: .json, sortParameter: .artist))
     }
 }

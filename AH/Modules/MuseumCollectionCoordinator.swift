@@ -28,8 +28,8 @@ final class MuseumCollectionCoordinator: Coordinator {
     }
     
     func start(animated: Bool = true) {
-        let pokemonVC = factory.makeCollectionVC(delegate: self)
-        navigationController.setViewControllers([pokemonVC], animated: animated)
+        let collectionVC = factory.makeCollectionVC(delegate: self)
+        navigationController.setViewControllers([collectionVC], animated: animated)
     }
     
     func stop(animated: Bool = true) {

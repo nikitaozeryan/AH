@@ -29,7 +29,7 @@ final class CoreDataStack {
     // MARK: - Private properties
     
     private var setupProducer: SignalProducer<CoreDataStack, AppError>?
-    private var persistentContainer = NSPersistentContainer(name: "Model")
+    private var persistentContainer = NSPersistentContainer(name: "AH")
     private var persistantStoreUrl: URL?
     private var entities: [NSEntityDescription] { persistentContainer.managedObjectModel.entities }
     private var didSetup = false

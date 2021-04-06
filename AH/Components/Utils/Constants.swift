@@ -19,8 +19,11 @@ public let defaultLoaderSize = CGSize(width: 48.0, height: 48.0)
 public let screenWidth = UIScreen.main.bounds.width
 public let screenHeight = UIScreen.main.bounds.height
 public let defaultLanguage = "en"
+public let titleColor = UIColor(red: 52/255, green: 53/255, blue: 55/255, alpha: 1.0)
+public let descriptionColor = UIColor(red: 164/255, green: 171/255, blue: 173/255, alpha: 1.0)
+public let headerHeight: CGFloat = 30.0
 
-public let pokemonPlaceholder = UIImage(named: "pokeball")
+public let imagePlaceholder = UIImage(named: "placeholder")
 
 
 public var baseURL: URL = {

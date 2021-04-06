@@ -7,11 +7,16 @@
 
 import Foundation
 
-internal protocol HasRemoteDataUseCase {
-    var remoteData: RemoteDataUseCase { get }
+internal protocol HasInformationUseCase {
+    var information: InformationUseCase { get }
 }
 
-typealias UseCases = HasRemoteDataUseCase
+internal protocol HasDownloadUseCase {
+    var download: DownloadUseCase { get }
+}
+
+typealias UseCases = HasInformationUseCase
+    & HasDownloadUseCase
 
 protocol UseCasesProvider: UseCases {}
 

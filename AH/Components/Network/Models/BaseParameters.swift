@@ -12,6 +12,7 @@ struct BaseParameters: RequestParams {
     var pagination: LimitOffset?
     var format: Format?
     var sortParameter: SortParameter?
+    var imageOnly: Bool?
     var key: String {
         Bundle.main.object(forInfoDictionaryKey: "key") as? String ?? ""
     }
@@ -23,6 +24,10 @@ struct BaseParameters: RequestParams {
             pagination.flatMap {
                 parameters.p <- $0.page
                 parameters.ps <- $0.limit
+            }
+            
+            imageOnly.flatMap {
+                parameters.imgonly <- $0
             }
             
             format.flatMap {

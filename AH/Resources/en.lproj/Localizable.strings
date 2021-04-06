@@ -11,3 +11,7 @@
 "loading" = "Loading";
 "error" = "Error";
 "ok" = "ok";
+
+// MARK: - CollectionVC
+
+"collectionVC.title" = "Rijksmuseum";

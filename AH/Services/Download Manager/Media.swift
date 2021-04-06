@@ -52,7 +52,7 @@ public final class Media {
     }
 
     let url: URL
-    let ownerID: Int64
+    let ownerID: String
     var image: UIImage?
 
     var status: Status {
@@ -63,7 +63,7 @@ public final class Media {
 
     // MARK: - Lifecycle
 
-    init(url: URL, ownerID: Int64) {
+    init(url: URL, ownerID: String) {
         self.url = url
         self.status = .unknown
         self.ownerID = ownerID
@@ -73,7 +73,6 @@ public final class Media {
 // MARK: - Hashable Implementation
 
 extension Media: Hashable {
-
     public static func == (lhs: Media, rhs: Media) -> Bool {
         lhs.url == rhs.url
     }
