@@ -18,6 +18,7 @@ extension Exhibit {
             case painter = "principalOrFirstMaker"
             case image = "webImage"
             case description = "longTitle"
+            case objectNumber
         }
         
         // MARK: - Properties
@@ -27,6 +28,7 @@ extension Exhibit {
         let painter: String
         let image: Image.Response?
         let description: String
+        let objectNumber: String
         
         // MARK: - Lifecycle
         
@@ -37,6 +39,7 @@ extension Exhibit {
             painter = try container.decode(String.self, forKey: .painter)
             image = try container.decodeIfPresent(Image.Response.self, forKey: .image)
             description = try container.decode(String.self, forKey: .description)
+            objectNumber = try container.decode(String.self, forKey: .objectNumber)
         }
     }
     
@@ -48,5 +51,6 @@ extension Exhibit {
         painter = response.painter
         image = response.image.flatMap { Image(response: $0) }
         description = response.description
+        objectNumber = response.objectNumber
     }
 }

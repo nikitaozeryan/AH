@@ -16,6 +16,7 @@ struct Exhibit {
     let painter: String
     let image: Image?
     let description: String
+    let objectNumber: String
     
     // MARK: - Lifecycle
     
@@ -25,6 +26,7 @@ struct Exhibit {
         painter = cdObject.painter
         description = cdObject.longTitle
         image = cdObject.image.map(Image.init)
+        objectNumber = cdObject.objectNumber
     }
 }
 
@@ -42,5 +44,6 @@ extension Exhibit: CoreDataPersistable {
         object.title = title
         object.painter = painter
         object.longTitle = description
+        object.objectNumber = objectNumber
     }
 }

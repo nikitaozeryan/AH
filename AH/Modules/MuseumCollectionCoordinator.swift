@@ -40,7 +40,7 @@ final class MuseumCollectionCoordinator: Coordinator {
 // MARK: - CollectionVMDelegate
 
 extension MuseumCollectionCoordinator: CollectionVMDelegate {
-    func collectionVM(_ viewModel: CollectionVM, didSelectExhibit exhibit: Exhibit) {
-        print("exhibit")
+    func collectionVM(_ viewModel: CollectionVM, didSelectExhibit exhibit: ExhibitWithDetails) {
+        print(exhibit)
     }
 }

@@ -13,5 +13,6 @@ protocol InformationUseCase {
     var exhibitsCount: MutableProperty<Int> { get }
     
     func fetchCollection(with params: BaseParameters) -> AsyncTask<Void>
+    func fetchExhibitDetails(with params: ExhibitDetailParameters) -> AsyncTask<ExhibitWithDetails?>
     func exhibitsFetchRequest() -> NSFetchRequest<ExhibitEntity>
 }

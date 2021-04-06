@@ -8,6 +8,7 @@
 import ReactiveSwift
 import CoreData
 
+typealias ExhibitWithDetails = (exhibit: Exhibit, details: ExhibitDetails)
 final class InformationService: InformationUseCase {
     
     // MARK: - Private Properties
@@ -38,6 +39,16 @@ final class InformationService: InformationUseCase {
             .flatMap(.latest) { [unowned self] response -> AsyncTask<Void> in
                 exhibitsCount.value = response.count
                 return saveExhibits(response.exhibits)
+            }
+    }
+    
+    func fetchExhibitDetails(with params: ExhibitDetailParameters) -> AsyncTask<ExhibitWithDetails?> {
+        network.reactive
+            .request(API.RijksData.fetchExhibitDetails(parameters: params))
+            .decode(ExhibitDetails.Response.self)
+            .map(ExhibitDetails.init)
+            .flatMap(.latest) { [unowned self] details -> AsyncTask<ExhibitWithDetails?> in
+                self.saveDetailsAndFetchInfo(details)
             }
     }
     
@@ -94,5 +105,19 @@ final class InformationService: InformationUseCase {
             }
             self.save(context)
         }.flatMapError { _ -> AsyncTask<Void> in .init(value: ()) }
+    }
+    
+    private func saveDetailsAndFetchInfo(_ exhibitDetails: ExhibitDetails) -> AsyncTask<ExhibitWithDetails?> {
+        database.performToChildViewContext { [unowned self] context -> ExhibitWithDetails? in
+            let detailsEntity = try context.fetchOrCreate(for: exhibitDetails,
+                                                          with: ExhibitDetailsEntity.findPredicate(id: exhibitDetails.id))
+            try exhibitDetails.update(detailsEntity)
+            self.save(context)
+            
+            let exhibitEntity = try context.fetchFirst(typeEntity: ExhibitEntity.self,
+                                                       predicate: ExhibitEntity.findPredicate(id: exhibitDetails.id))
+            
+            return (Exhibit(from: exhibitEntity), ExhibitDetails(from: detailsEntity))
+        }
     }
 }

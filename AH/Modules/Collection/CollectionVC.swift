@@ -53,18 +53,12 @@ final class CollectionVC: BaseVC, ViewModelContainer {
                 viewController.showErrorAlert(error)
             }
         }
-        //        reactive.makeBindingTarget { viewController, hasMore in
-        //            viewController.mainView.tableView.tableFooterView = hasMore ?
-        //                viewController.tableViewFooter :
-        //                nil
-        //            viewController.tableViewFooter.setAnimating(hasMore)
-        //        } <~ viewModel.pagination.map { $0.hasMore }.skipRepeats()
-        //
-        //        let activityActionGroup = ActionGroup()
-        //        activityActionGroup.append(viewModel.fetchPokemonInfo)
-        //
-        //        reactive.activity <~ activityActionGroup.isExecuting
-        //        reactive.errors <~ viewModel.actions.errors
+        
+        let activityActionGroup = ActionGroup()
+        activityActionGroup.append(viewModel.fetchExhibitDetailsAction)
+        
+        reactive.activity <~ activityActionGroup.isExecuting
+        reactive.errors <~ viewModel.actions.errors
     }
     
     // MARK: - Helper methods

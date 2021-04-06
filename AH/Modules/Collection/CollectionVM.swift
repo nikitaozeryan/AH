@@ -8,7 +8,7 @@
 import ReactiveSwift
 
 protocol CollectionVMDelegate: AnyObject {
-    func collectionVM(_ viewModel: CollectionVM, didSelectExhibit exhibit: Exhibit)
+    func collectionVM(_ viewModel: CollectionVM, didSelectExhibit exhibit: ExhibitWithDetails)
 }
 
 final class CollectionVM: UseCasesConsumer {
@@ -24,9 +24,9 @@ final class CollectionVM: UseCasesConsumer {
     private weak var delegate: CollectionVMDelegate?
 
     // MARK: - Actions
-    
-    
-    private(set) lazy var fetchExhibitsAction = Action(execute: fetchCollection)
+
+    private(set) lazy var fetchExhibitsAction = Action.observedExecute(fetchCollection)
+    private(set) lazy var fetchExhibitDetailsAction = Action.observedExecute(useCases.information.fetchExhibitDetails)
     
     // MARK: - Life Cycle
     
@@ -40,14 +40,14 @@ final class CollectionVM: UseCasesConsumer {
     // MARK: - Helper methods
     
     func selectExhibitEntity(_ exhibitEntity: ExhibitEntity) {
-//        fetchPokemonInfo.apply(Pokemon(from: pokemonEntity)).start()
+        fetchExhibitDetailsAction.apply(ExhibitDetailParameters(objectNumber: exhibitEntity.objectNumber)).start()
     }
 
     // MARK: - Private methods
 
     private func setupActionGroup() {
         actions.append(fetchExhibitsAction)
-//        actions.append(fetchPokemonInfo)
+        actions.append(fetchExhibitDetailsAction)
     }
 
     private func setupObservers() {
@@ -73,6 +73,15 @@ final class CollectionVM: UseCasesConsumer {
 //                guard let viewModel = self else { return }
 //                viewModel.delegate?.pokemonVM(viewModel, didSelectPokemon: pokemon)
 //            }
+        
+        fetchExhibitDetailsAction
+            .values
+            .skipNil()
+            .take(duringLifetimeOf: self)
+            .observeValues { [weak self] details in
+                guard let self = self else { return }
+                self.delegate?.collectionVM(self, didSelectExhibit: details)
+            }
     }
 
     private func fetchCollection() -> AsyncTask<Void> {

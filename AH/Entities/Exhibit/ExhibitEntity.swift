@@ -17,6 +17,7 @@ public final class ExhibitEntity: NSManagedObject, FetchRequestProvider, Managed
     @NSManaged public var title: String
     @NSManaged public var painter: String
     @NSManaged public var longTitle: String
+    @NSManaged public var objectNumber: String
     @NSManaged public var image: ImageEntity?
 }
 

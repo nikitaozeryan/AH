@@ -30,6 +30,7 @@ final class ExhibitCVC: UICollectionViewCell {
         imageView.image = imagePlaceholder
         imageView.contentMode = .scaleAspectFit
         imageView.clipsToBounds = true
+        imageView.backgroundColor = .lightGray
         return imageView
     }()
     
@@ -77,9 +78,10 @@ final class ExhibitCVC: UICollectionViewCell {
     func configure(with exhibit: ExhibitEntity) {
         titleLabel.text = exhibit.title
         descriptionLabel.text = exhibit.longTitle
+        avatarImageView.image = imagePlaceholder
         exhibit.image.flatMap { image in
             URL(string: image.url).flatMap {
-                avatarImageView.sd_setImage(with: $0)
+                avatarImageView.sd_setImage(with: $0, placeholderImage: imagePlaceholder)
             }
         }
     }

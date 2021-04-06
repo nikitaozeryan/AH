@@ -7,14 +7,27 @@
 
 import Foundation
 
-struct BaseParameters: RequestParams {
-    var language: Language?
-    var pagination: LimitOffset?
-    var format: Format?
-    var sortParameter: SortParameter?
-    var imageOnly: Bool?
+class BaseParameters: RequestParams {
+    let language: Language?
+    let pagination: LimitOffset?
+    let format: Format?
+    let sortParameter: SortParameter?
+    let imageOnly: Bool?
     var key: String {
         Bundle.main.object(forInfoDictionaryKey: "key") as? String ?? ""
+    }
+    
+    required init(language: Language = .en,
+                  pagination: LimitOffset?,
+                  format: Format = .json,
+                  sortParameter: SortParameter?,
+                  imageOnly: Bool?) {
+        
+        self.language = language
+        self.pagination = pagination
+        self.format = format
+        self.sortParameter = sortParameter
+        self.imageOnly = imageOnly
     }
     
     var builder: Parameters {
