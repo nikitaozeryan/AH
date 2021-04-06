@@ -50,30 +50,7 @@ final class CollectionVM: UseCasesConsumer {
         actions.append(fetchExhibitDetailsAction)
     }
 
-    private func setupObservers() {
-//        useCases
-//            .information
-//            .exhibitsCount
-//            .signal
-//            .take(duringLifetimeOf: self)
-//            .observeValues { [weak self] exhibitsCount in
-//                guard let self = self else { return }
-//                self.pagination.value = LimitOffset(page: self.pagination.value.page,
-//                                                    limit: self.pagination.value.limit,
-//                                                    total: exhibitsCount)
-//        }
-//        fetchPokemonsAction.apply().start()
-//        pagination <~ fetchPokemonsAction.values.map { $0.pagination }
-//
-//        fetchPokemonInfo
-//            .values
-//            .take(duringLifetimeOf: self)
-//            .observe(on: UIScheduler())
-//            .observeValues { [weak self] pokemon in
-//                guard let viewModel = self else { return }
-//                viewModel.delegate?.pokemonVM(viewModel, didSelectPokemon: pokemon)
-//            }
-        
+    private func setupObservers() {        
         fetchExhibitDetailsAction
             .values
             .skipNil()
