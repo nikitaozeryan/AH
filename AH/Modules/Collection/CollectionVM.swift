@@ -87,7 +87,7 @@ final class CollectionVM: UseCasesConsumer {
     private func fetchCollection() -> AsyncTask<Void> {
         guard let pagination = pagination.value.nextPage() else { return .empty }
         self.pagination.value = pagination
-        return useCases.information.fetchCollection(with: BaseParameters(language: .en,
+        return useCases.information.fetchAndSaveCollection(with: BaseParameters(language: .en,
                                                                   pagination: self.pagination.value,
                                                                   format: .json,
                                                                   sortParameter: .artist,

@@ -12,8 +12,9 @@ protocol InformationUseCase {
     var setupProducer: SignalProducer<CoreDataStack, AppError> { get }
     var exhibitsCount: MutableProperty<Int> { get }
     
-    func fetchCollection(with params: BaseParameters) -> AsyncTask<Void>
+    func fetchAndSaveCollection(with params: BaseParameters) -> AsyncTask<Void>
     func fetchExhibitDetails(with params: ExhibitDetailParameters) -> AsyncTask<ExhibitWithDetails?>
     func tvDataSource(from information: ExhibitWithDetails) -> [ExhibitDetail]
     func exhibitsFetchRequest() -> NSFetchRequest<ExhibitEntity>
+    func fetchCollection(with params: BaseParameters) -> AsyncTask<CollectionResponse>
 }

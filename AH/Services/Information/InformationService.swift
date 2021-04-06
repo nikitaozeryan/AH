@@ -32,11 +32,8 @@ final class InformationService: InformationUseCase {
         self.database = database
     }
     
-    func fetchCollection(with params: BaseParameters) -> AsyncTask<Void> {
-        network
-            .reactive
-            .request(API.RijksData.fetchCollection(parameters: params))
-            .decode(CollectionResponse.self)
+    func fetchAndSaveCollection(with params: BaseParameters) -> AsyncTask<Void> {
+        fetchCollection(with: params)
             .flatMap(.latest) { [unowned self] response -> AsyncTask<Void> in
                 exhibitsCount.value = response.count
                 return saveExhibits(response.exhibits)
@@ -82,6 +79,13 @@ final class InformationService: InformationUseCase {
         let sortDescriptor = NSSortDescriptor(keyPath: \ExhibitEntity.painter, ascending: true)
         fetchRequest.sortDescriptors = [sortDescriptor]
         return fetchRequest
+    }
+    
+    func fetchCollection(with params: BaseParameters) -> AsyncTask<CollectionResponse> {
+        network
+            .reactive
+            .request(API.RijksData.fetchCollection(parameters: params))
+            .decode(CollectionResponse.self)
     }
     
     // MARK: - Helper methods
