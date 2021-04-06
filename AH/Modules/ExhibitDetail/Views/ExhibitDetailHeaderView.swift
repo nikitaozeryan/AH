@@ -1,21 +1,13 @@
 //
-//  ExhibitCVC.swift
+//  ExhibitDetailHeaderView.swift
 //  AH
 //
-//  Created by Nikita Ozerian on 05.04.2021.
+//  Created by Nikita Ozerian on 06.04.2021.
 //
 
 import UIKit
-import SDWebImage
 
-final class ExhibitCVC: UICollectionViewCell {
-    private enum C {
-        static let cvcOffset = offset / 2
-    }
-    
-    // MARK: - Properties
-    
-    private var media: Media?
+final class ExhibitDetailHeaderView: UITableViewHeaderFooterView {
     
     // MARK: - Views
     
@@ -30,7 +22,6 @@ final class ExhibitCVC: UICollectionViewCell {
         imageView.image = imagePlaceholder
         imageView.contentMode = .scaleAspectFit
         imageView.clipsToBounds = true
-        imageView.backgroundColor = .lightGray
         return imageView
     }()
     
@@ -54,15 +45,8 @@ final class ExhibitCVC: UICollectionViewCell {
     
     // MARK: - Lifecycle
     
-    init() {
-        super.init(frame: .zero)
-        
-        setup()
-        setupConstraints()
-    }
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    override init(reuseIdentifier: String?) {
+        super.init(reuseIdentifier: reuseIdentifier)
         
         setup()
         setupConstraints()
@@ -75,9 +59,9 @@ final class ExhibitCVC: UICollectionViewCell {
     
     // MARK: - Configure
     
-    func configure(with exhibit: ExhibitEntity) {
+    func configure(with exhibit: Exhibit) {
         titleLabel.text = exhibit.title
-        descriptionLabel.text = exhibit.longTitle
+        descriptionLabel.text = exhibit.description
         avatarImageView.image = imagePlaceholder
         exhibit.image.flatMap { image in
             URL(string: image.url).flatMap {
@@ -97,22 +81,21 @@ final class ExhibitCVC: UICollectionViewCell {
     
     private func setupConstraints() {
         containerView.snp.makeConstraints { $0.edges.equalTo(contentView) }
-        
         avatarImageView.snp.makeConstraints {
-            $0.top.equalToSuperview().offset(C.cvcOffset)
-            $0.leading.equalToSuperview().offset(C.cvcOffset)
-            $0.trailing.equalToSuperview().inset(C.cvcOffset)
+            $0.top.equalToSuperview().offset(offset)
+            $0.left.equalToSuperview().offset(offset)
+            $0.right.equalToSuperview().inset(offset)
         }
         
         titleLabel.snp.makeConstraints {
-            $0.top.equalTo(avatarImageView.snp.bottom).offset(C.cvcOffset)
+            $0.top.equalTo(avatarImageView.snp.bottom).offset(offset)
             $0.leading.trailing.equalTo(avatarImageView)
         }
         
         descriptionLabel.snp.makeConstraints {
-            $0.top.equalTo(titleLabel.snp.bottom).offset(C.cvcOffset)
+            $0.top.equalTo(titleLabel.snp.bottom).offset(offset)
             $0.leading.trailing.equalTo(avatarImageView)
-            $0.bottom.lessThanOrEqualToSuperview().inset(C.cvcOffset)
+            $0.bottom.lessThanOrEqualToSuperview().inset(offset)
         }
     }
 }

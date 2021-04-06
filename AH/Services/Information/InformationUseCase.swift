@@ -14,5 +14,6 @@ protocol InformationUseCase {
     
     func fetchCollection(with params: BaseParameters) -> AsyncTask<Void>
     func fetchExhibitDetails(with params: ExhibitDetailParameters) -> AsyncTask<ExhibitWithDetails?>
+    func tvDataSource(from information: ExhibitWithDetails) -> [ExhibitDetail]
     func exhibitsFetchRequest() -> NSFetchRequest<ExhibitEntity>
 }

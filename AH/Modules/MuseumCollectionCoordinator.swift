@@ -41,6 +41,13 @@ final class MuseumCollectionCoordinator: Coordinator {
 
 extension MuseumCollectionCoordinator: CollectionVMDelegate {
     func collectionVM(_ viewModel: CollectionVM, didSelectExhibit exhibit: ExhibitWithDetails) {
-        print(exhibit)
+        let exhibitDetailVC = factory.makeExhibitDetailVC(with: exhibit, delegate: self)
+        navigationController.pushViewController(exhibitDetailVC, animated: true)
     }
+}
+
+// MARK: - ExhibitDetailVMDelegate
+
+extension MuseumCollectionCoordinator: ExhibitDetailVMDelegate {
+    
 }

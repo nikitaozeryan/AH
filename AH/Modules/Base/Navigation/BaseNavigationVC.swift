@@ -40,7 +40,7 @@ class BaseNavigationVC: UINavigationController {
         super.loadView()
         
         navigationBar.barTintColor = .clear
-        navigationBar.tintColor = .white
+        navigationBar.tintColor = .black
         navigationBar.barStyle = .black
         navigationBar.isTranslucent = true
         delegate = self
@@ -86,12 +86,12 @@ class BaseNavigationVC: UINavigationController {
         
         if #available(iOS 13.0, *) {
             let navBarAppearance = UINavigationBarAppearance()
-            navBarAppearance.titleTextAttributes = [.foregroundColor: UIColor.blue]
-            navBarAppearance.largeTitleTextAttributes = [.foregroundColor: UIColor.blue]
+            navBarAppearance.titleTextAttributes = [.foregroundColor: UIColor.black]
+            navBarAppearance.largeTitleTextAttributes = [.foregroundColor: UIColor.black]
             navigationBar.standardAppearance = navBarAppearance
             navigationBar.scrollEdgeAppearance = navBarAppearance
         } else {
-            navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.blue]
+            navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.black]
         }
         
         delegate = self
@@ -122,7 +122,7 @@ extension BaseNavigationVC: UINavigationControllerDelegate, UIGestureRecognizerD
         let oldBarStyle = navigationBar.barStyle
         let oldShadowImage = navigationBar.shadowImage
         let barStyle = viewController.preferredStatusBarStyle == .lightContent ? UIBarStyle.black : UIBarStyle.default
-        let preferredTintColor = viewController.preferredNavigationBarTintColor ?? .white
+        let preferredTintColor = viewController.preferredNavigationBarTintColor ?? .black
         
         guard
             animated,

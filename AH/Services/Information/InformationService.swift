@@ -9,6 +9,7 @@ import ReactiveSwift
 import CoreData
 
 typealias ExhibitWithDetails = (exhibit: Exhibit, details: ExhibitDetails)
+typealias ExhibitDetail = (title: String, detail: String)
 final class InformationService: InformationUseCase {
     
     // MARK: - Private Properties
@@ -50,6 +51,30 @@ final class InformationService: InformationUseCase {
             .flatMap(.latest) { [unowned self] details -> AsyncTask<ExhibitWithDetails?> in
                 self.saveDetailsAndFetchInfo(details)
             }
+    }
+    
+    func tvDataSource(from information: ExhibitWithDetails) -> [ExhibitDetail] {
+        var details: [ExhibitDetail] = []
+        with(information) {
+            $0.details.createdOn.flatMap { details.append(((localizedString(key: "exhibitDetailVC.createdOn")), $0)) }
+            $0.details.updatedOn.flatMap { details.append(((localizedString(key: "exhibitDetailVC.updatedOn")), $0)) }
+            $0.details.dating.flatMap {
+                details.append(((localizedString(key: "exhibitDetailVC.presentingDate")), $0.presentingDate))
+                details.append(((localizedString(key: "exhibitDetailVC.period")), "\($0.period)"))
+            }
+            $0.details.artist.flatMap { details.append(((localizedString(key: "exhibitDetailVC.artist")), $0)) }
+            if !$0.details.productionPlaces.isEmpty {
+                details.append(((localizedString(key: "exhibitDetailVC.productionPlaces")), $0.details.productionPlaces.joined(separator: ",\n")))
+            }
+            if !$0.details.materials.isEmpty {
+                details.append(((localizedString(key: "exhibitDetailVC.materials")), $0.details.materials.joined(separator: ",\n")))
+            }
+            if !$0.details.techniques.isEmpty {
+                details.append(((localizedString(key: "exhibitDetailVC.techniques")), $0.details.techniques.joined(separator: ",\n")))
+            }
+            
+        }
+        return details
     }
     
     func exhibitsFetchRequest() -> NSFetchRequest<ExhibitEntity> {

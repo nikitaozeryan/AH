@@ -33,6 +33,9 @@
 		8F75703D261BF93700851173 /* Layout+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F75703C261BF93700851173 /* Layout+Helpers.swift */; };
 		8F757042261BF93D00851173 /* Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F757041261BF93D00851173 /* Layout.swift */; };
 		8F7AE847261B718B008AB1EB /* Exhibit+Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F7AE846261B718B008AB1EB /* Exhibit+Response.swift */; };
+		8F85F93F261C8A6E00DFE67C /* ExhibitDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F85F93E261C8A6E00DFE67C /* ExhibitDetailView.swift */; };
+		8F85F947261C8AE200DFE67C /* DetailTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F85F946261C8AE200DFE67C /* DetailTVC.swift */; };
+		8F85F94C261C8BE600DFE67C /* ExhibitDetailHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F85F94B261C8BE600DFE67C /* ExhibitDetailHeaderView.swift */; };
 		8F8D3348261AF90100BA1587 /* AHTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F8D3347261AF90100BA1587 /* AHTests.swift */; };
 		8F8D3353261AF90100BA1587 /* AHUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F8D3352261AF90100BA1587 /* AHUITests.swift */; };
 		8F8D3463261B014200BA1587 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8F8D3375261B014100BA1587 /* Assets.xcassets */; };
@@ -214,6 +217,9 @@
 		8F75703C261BF93700851173 /* Layout+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Layout+Helpers.swift"; sourceTree = "<group>"; };
 		8F757041261BF93D00851173 /* Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Layout.swift; sourceTree = "<group>"; };
 		8F7AE846261B718B008AB1EB /* Exhibit+Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Exhibit+Response.swift"; sourceTree = "<group>"; };
+		8F85F93E261C8A6E00DFE67C /* ExhibitDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExhibitDetailView.swift; sourceTree = "<group>"; };
+		8F85F946261C8AE200DFE67C /* DetailTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTVC.swift; sourceTree = "<group>"; };
+		8F85F94B261C8BE600DFE67C /* ExhibitDetailHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExhibitDetailHeaderView.swift; sourceTree = "<group>"; };
 		8F8D332A261AF90000BA1587 /* AH.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AH.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8F8D3343261AF90100BA1587 /* AHTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AHTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8F8D3347261AF90100BA1587 /* AHTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AHTests.swift; sourceTree = "<group>"; };
@@ -1096,6 +1102,8 @@
 			isa = PBXGroup;
 			children = (
 				8FACFADE261C80B5008B4DC1 /* Cells */,
+				8F85F93E261C8A6E00DFE67C /* ExhibitDetailView.swift */,
+				8F85F94B261C8BE600DFE67C /* ExhibitDetailHeaderView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1103,6 +1111,7 @@
 		8FACFADE261C80B5008B4DC1 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				8F85F946261C8AE200DFE67C /* DetailTVC.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -1377,6 +1386,8 @@
 				8F8D34B2261B014200BA1587 /* AtomicBool.swift in Sources */,
 				8F8D34DC261B014200BA1587 /* UIImage+Resize.swift in Sources */,
 				8F8D3481261B014200BA1587 /* Media.swift in Sources */,
+				8F85F947261C8AE200DFE67C /* DetailTVC.swift in Sources */,
+				8F85F93F261C8A6E00DFE67C /* ExhibitDetailView.swift in Sources */,
 				8F8D34E1261B014200BA1587 /* UIEdgeInsets+Extension.swift in Sources */,
 				8F8D34FD261B014200BA1587 /* DefaultInitializable.swift in Sources */,
 				8F8D347A261B014200BA1587 /* BaseNavigationVC.swift in Sources */,
@@ -1400,6 +1411,7 @@
 				8F8D34C4261B014200BA1587 /* Constants.swift in Sources */,
 				8F8D34E4261B014200BA1587 /* UITextView+Extensions.swift in Sources */,
 				8F8D34BB261B014200BA1587 /* HTTPServerError.swift in Sources */,
+				8F85F94C261C8BE600DFE67C /* ExhibitDetailHeaderView.swift in Sources */,
 				8F29CFEE261B6193009BF095 /* Exhibit.swift in Sources */,
 				8F8D347D261B014200BA1587 /* WeakSet.swift in Sources */,
 				8F8D34DA261B014200BA1587 /* UIView+BorderSide.swift in Sources */,

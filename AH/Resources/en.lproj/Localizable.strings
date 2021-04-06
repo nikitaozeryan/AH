@@ -15,3 +15,15 @@
 // MARK: - CollectionVC
 
 "collectionVC.title" = "Rijksmuseum";
+
+// MARK: - ExhibitDetailVC
+
+"exhibitDetailVC.title" = "Exhibit";
+"exhibitDetailVC.createdOn" = "Created on: ";
+"exhibitDetailVC.updatedOn" = "Updated on: ";
+"exhibitDetailVC.productionPlaces" = "Production places: ";
+"exhibitDetailVC.materials" = "Materials: ";
+"exhibitDetailVC.presentingDate" = "Date of presentation: ";
+"exhibitDetailVC.period" = "Period: ";
+"exhibitDetailVC.artist" = "Author: ";
+"exhibitDetailVC.techniques" = "Used techniques: ";
