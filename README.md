@@ -85,4 +85,4 @@ These primitives can be used to uniformly represent common Cocoa and generic pro
 
  ## Example
 
-  [![Watch the video](https://user-images.githubusercontent.com/16369351/113867273-01cdb580-97b7-11eb-9271-ca4592523db1.mp4)
+  ![Watch the video](https://user-images.githubusercontent.com/16369351/113867273-01cdb580-97b7-11eb-9271-ca4592523db1.mp4)
