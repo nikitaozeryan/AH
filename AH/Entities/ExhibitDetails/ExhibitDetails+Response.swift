@@ -35,6 +35,7 @@ extension ExhibitDetails {
     
     init(response: Response) {
         id = response.artPage.id
+        objectNumber = response.artPage.objectNumber
         createdOn = response.artPage.createdOn.flatMap { $0 == "0001-01-01T00:00:00" ? nil : $0 }
         updatedOn = response.artPage.updatedOn.flatMap { $0 == "0001-01-01T00:00:00" ? nil : $0 }
         let art = Art(response: response.art)

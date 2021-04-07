@@ -5,6 +5,7 @@
         <attribute name="createdOn" optional="YES" attributeType="String"/>
         <attribute name="id" optional="YES" attributeType="String"/>
         <attribute name="materials" optional="YES" attributeType="Transformable" customClassName="[String]"/>
+        <attribute name="objectNumber" attributeType="String"/>
         <attribute name="period" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="presentingDate" optional="YES" attributeType="String"/>
         <attribute name="productionPlaces" optional="YES" attributeType="Transformable" customClassName="[String]"/>
@@ -27,7 +28,7 @@
         <relationship name="exhibit" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ExhibitEntity" inverseName="image" inverseEntity="ExhibitEntity"/>
     </entity>
     <elements>
-        <element name="ExhibitDetailsEntity" positionX="-54" positionY="54" width="128" height="164"/>
+        <element name="ExhibitDetailsEntity" positionX="-54" positionY="54" width="128" height="179"/>
         <element name="ExhibitEntity" positionX="-63" positionY="-18" width="128" height="119"/>
         <element name="ImageEntity" positionX="-54" positionY="18" width="128" height="104"/>
     </elements>

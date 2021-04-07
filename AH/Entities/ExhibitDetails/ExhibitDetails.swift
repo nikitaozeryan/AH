@@ -12,6 +12,7 @@ struct ExhibitDetails {
     // MARK: - Properties
     
     let id: String
+    let objectNumber: String
     let createdOn: String?
     let updatedOn: String?
     let productionPlaces: [String]
@@ -24,6 +25,7 @@ struct ExhibitDetails {
     
     init(from cdObject: ExhibitDetailsEntity) {
         id = cdObject.id
+        objectNumber = cdObject.objectNumber
         createdOn = cdObject.createdOn
         updatedOn = cdObject.updatedOn
         productionPlaces = cdObject.productionPlaces
@@ -40,11 +42,12 @@ extension ExhibitDetails: CoreDataPersistable {
     typealias ManagedObject = ExhibitDetailsEntity
     
     var primaryKeyValue: Any {
-        return id
+        return objectNumber
     }
     
     func update(_ object: ManagedObject) throws {
         object.id = id
+        object.objectNumber = objectNumber
         object.createdOn = createdOn
         object.updatedOn = updatedOn
         object.productionPlaces = productionPlaces

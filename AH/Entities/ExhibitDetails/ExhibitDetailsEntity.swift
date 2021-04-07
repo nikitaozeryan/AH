@@ -14,6 +14,7 @@ public final class ExhibitDetailsEntity: NSManagedObject, FetchRequestProvider, 
     typealias ID = String
     
     @NSManaged public var id: String
+    @NSManaged public var objectNumber: String
     @NSManaged public var createdOn: String?
     @NSManaged public var updatedOn: String?
     @NSManaged public var productionPlaces: [String]
@@ -28,6 +29,6 @@ public final class ExhibitDetailsEntity: NSManagedObject, FetchRequestProvider, 
 
 extension ExhibitDetailsEntity: PrimaryKeyProvider {
     static var primaryKey: String {
-        return #keyPath(ExhibitDetailsEntity.id)
+        return #keyPath(ExhibitDetailsEntity.objectNumber)
     }
 }

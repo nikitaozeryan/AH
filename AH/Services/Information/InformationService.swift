@@ -41,12 +41,9 @@ final class InformationService: InformationUseCase {
     }
     
     func fetchExhibitDetails(with params: ExhibitDetailParameters) -> AsyncTask<ExhibitWithDetails?> {
-        network.reactive
-            .request(API.RijksData.fetchExhibitDetails(parameters: params))
-            .decode(ExhibitDetails.Response.self)
-            .map(ExhibitDetails.init)
-            .flatMap(.latest) { [unowned self] details -> AsyncTask<ExhibitWithDetails?> in
-                self.saveDetailsAndFetchInfo(details)
+        fetchExhibitDetails(with: params.objectNumber)
+            .flatMapError { [unowned self] _ -> AsyncTask<ExhibitWithDetails?> in
+                self.getExhibitDetails(with: params)
             }
     }
     
@@ -145,6 +142,27 @@ final class InformationService: InformationUseCase {
             
             let exhibitEntity = try context.fetchFirst(typeEntity: ExhibitEntity.self,
                                                        predicate: ExhibitEntity.findPredicate(id: exhibitDetails.id))
+            
+            return (Exhibit(from: exhibitEntity), ExhibitDetails(from: detailsEntity))
+        }
+    }
+    
+    private func getExhibitDetails(with params: ExhibitDetailParameters) -> AsyncTask<ExhibitWithDetails?> {
+        network.reactive
+            .request(API.RijksData.fetchExhibitDetails(parameters: params))
+            .decode(ExhibitDetails.Response.self)
+            .map(ExhibitDetails.init)
+            .flatMap(.latest) { [unowned self] details -> AsyncTask<ExhibitWithDetails?> in
+                self.saveDetailsAndFetchInfo(details)
+            }
+    }
+    
+    private func fetchExhibitDetails(with id: String) -> AsyncTask<ExhibitWithDetails?> {
+        database.performToChildViewContext { context -> ExhibitWithDetails? in
+            let detailsEntity = try context.fetchFirst(typeEntity: ExhibitDetailsEntity.self,
+                                   predicate: ExhibitDetailsEntity.findPredicate(id: id))
+            let exhibitEntity = try context.fetchFirst(typeEntity: ExhibitEntity.self,
+                                                       predicate: ExhibitEntity.findPredicate(id: detailsEntity.id))
             
             return (Exhibit(from: exhibitEntity), ExhibitDetails(from: detailsEntity))
         }

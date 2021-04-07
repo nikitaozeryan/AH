@@ -9,6 +9,7 @@ import Foundation
 
 struct ArtPage: Decodable {
     let id: String
+    let objectNumber: String
     let createdOn: String?
     let updatedOn: String?
 }
