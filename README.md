@@ -84,5 +84,6 @@ These primitives can be used to uniformly represent common Cocoa and generic pro
  SnapKit is a DSL to make Auto Layout easy on both iOS and OS X.
 
  ## Example
-
-  ![Watch the video](https://user-images.githubusercontent.com/16369351/113867273-01cdb580-97b7-11eb-9271-ca4592523db1.mp4)
+<a href="https://user-images.githubusercontent.com/16369351/113867273-01cdb580-97b7-11eb-9271-ca4592523db1.mp4" target="_blank">
+ <img src="https://user-images.githubusercontent.com/16369351/113869872-e1ebc100-97b9-11eb-849d-315b70d4facb.jpeg" alt="Preview video" width="88.6" height="192" border="10" />
+</a>
