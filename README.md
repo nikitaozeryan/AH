@@ -1,6 +1,17 @@
 
 # AH
 
+## Task
+
+App has two screens:
+- [x] An overview page with a list of items
+- [x] Should have sections with headers
+- [x] Items should have text and image
+- [x] Page should be paginated
+- [x] A detailpage, with more details about the item
+- [x] Loading and converting JSON to objects should be asynchronous, a loading icon / animation should be shown
+- [x] Automated tests should be present (full coverage not needed off course)
+
 # Libraries:
 
 ## ReactiveSwift, ReactiveCocoa
